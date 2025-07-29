@@ -4,11 +4,14 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.rickandmorty.dataClasses.CharactersResponse
+import dagger.hilt.android.lifecycle.HiltViewModel
+import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class CharactersViewModel(private val repository: CharactersRepository) : ViewModel() {
+@HiltViewModel
+class CharactersViewModel @Inject constructor(private val repository: CharactersRepository) : ViewModel() {
 
     private val _characters = MutableStateFlow<List<CharactersResponse>>(emptyList())
     val  characters: StateFlow<List<CharactersResponse>> get() = _characters

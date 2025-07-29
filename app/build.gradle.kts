@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -41,6 +42,10 @@ android {
 }
 
 dependencies {
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation("com.google.dagger:hilt-android:2.57")
+    ksp("com.google.dagger:hilt-compiler:2.57")
+
     implementation("com.google.accompanist:accompanist-swiperefresh:0.33.2-alpha")
     implementation("com.google.accompanist:accompanist-swiperefresh:0.30.1")
 

@@ -6,8 +6,9 @@ import com.example.rickandmorty.dataClasses.CharactersResponse
 import com.example.rickandmorty.dataClasses.Location
 import com.example.rickandmorty.dataClasses.Origin
 import com.google.gson.Gson
+import jakarta.inject.Inject
 
-class CharactersRepository(
+class CharactersRepository @Inject constructor(
     private val rickAndMortyApi: RickAndMortyApi,
     private val dao: CharacterDao
 ) {

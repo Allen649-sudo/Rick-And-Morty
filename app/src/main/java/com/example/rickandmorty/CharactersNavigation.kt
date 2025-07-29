@@ -6,14 +6,12 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalContext
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.example.rickandmorty.screens.CharacterCardList
 import com.example.rickandmorty.screens.CharacterDetailScreen
 import com.google.accompanist.navigation.animation.AnimatedNavHost
+import androidx.hilt.navigation.compose.hiltViewModel
 
 sealed class Screen(val route: String) {
     object CharacterCardList : Screen("CharacterCardList")
@@ -22,17 +20,15 @@ sealed class Screen(val route: String) {
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun CurrencyNavigation(navController: NavHostController) {
+fun CharactersNavigation(navController: NavHostController) {
 
-    val context = LocalContext.current
-    val app = context.applicationContext as App
-    val database = app.database
-    val dao = database.characterDao()
+//    val context = LocalContext.current
+//    val app = context.applicationContext as App
+//    val database = app.database
+//    val dao = database.characterDao()
 
-    val weatherApi = remember { provideApi() }
-    val repository = remember { CharactersRepository(weatherApi, dao) }
-
-    val viewModel: CharactersViewModel = viewModel(factory = CharactersViewModelFactory(repository))
+//    val viewModel: CharactersViewModel = viewModel(factory = CharactersViewModelFactory(repository))
+    val viewModel: CharactersViewModel = hiltViewModel()
 
         AnimatedNavHost(
             navController = navController,
